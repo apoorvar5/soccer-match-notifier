@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "MatchPulse - Soccer Live Events & Alerts",
+  "version": "1.0.0",
+  "description": "Real-time custom notifications on key soccer match events (Kickoff, Goals, Scorers, Assists, Halftime, Red Cards & Full Time) for your followed teams.",
+  "permissions": [
+    "notifications",
+    "alarms",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://site.api.espn.com/*",
+    "https://*.espncdn.com/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "MatchPulse Soccer Alerts"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
